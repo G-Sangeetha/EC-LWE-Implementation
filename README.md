@@ -11,6 +11,14 @@ Implementation and benchmarking of the Noise-Augmented Elliptic-Curve Learning W
 
 **ec_lwe_result_summary.csv:** Provides the processed statistical summary (Mean and Standard Deviation) for key generation, encryption, and decryption latencies, as well as final ciphertext sizes across the tested message range.
 
+
+**Execution Environments**
+
+**EC-LWE Implementation (EC_LWE_test.ipynb):** Executed on a local machine [Intel i5, 11th gen , 16 GB RAM] to evaluate raw performance, entropy, and local hardware behavior.
+
+**Standardized Benchmarking (Test_on_ECC&PQC.ipynb):** Executed via Google Colab (Standard Runtime). This environment was used to provide a globally reproducible baseline for comparing EC-LWE against NIST PQC standards (Kyber and FrodoKEM) under identical virtualized conditions.
+
+
 **Usage**
 
 **Local Test:** Run EC_LWE_test.ipynb to generate the performance metrics and entropy scores for the EC-LWE scheme.
