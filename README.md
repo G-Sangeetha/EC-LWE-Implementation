@@ -1,26 +1,55 @@
 # EC-LWE-Implementation
-Implementation and benchmarking of the Noise-Augmented Elliptic-Curve Learning With Errors (EC-LWE) scheme.
+Implementation and benchmarking of the Noise-Augmented Elliptic-Curve Learning With Errors (EC-LWE) scheme under classical security assumptions, including authenticated encryption, ciphertext diversity analysis, and performance evaluation.
 
 **Repository Structure**
 
-**EC_LWE_test.ipynb:** The core implementation of the EC-LWE protocol, including RFC 9380 hash-to-curve noise generation and entropy testing. (Runs on Local Machine).
+**EC-LWE-Implementation&Testing.ipynb:** 
+The unified and final notebook containing the complete EC-LWE implementation and evaluation, including:
 
-**Test_on_ECC&PQC.ipynb:** Google Colab notebook containing the comparative benchmarking against ECC, NTRU, Kyber and FrodoKEM.
+RFC 9380 hash-to-curve–based deterministic noise generation
 
-**ec_lwe_result.csv:** Contains raw performance data from 50 independent execution runs for each message size (16 to 1024 bytes). This file provides the basis for our statistical reliability and outlier analysis.
+Authenticated EC-LWE variant (encrypt-then-MAC) for integrity and malleability resistance
 
-**ec_lwe_result_summary.csv:** Provides the processed statistical summary (Mean and Standard Deviation) for key generation, encryption, and decryption latencies, as well as final ciphertext sizes across the tested message range.
+Ciphertext diversity and entropy analysis
 
+Performance benchmarking across message sizes (16 to 1024 bytes)
+
+This notebook is the single source of implementation and results.
+
+**ec_lwe_result.csv:** Contains raw performance data from 50 independent execution runs for each message size (16 to 1024 bytes). This file provides the basis for statistical reliability and variability analysis.
+
+**ec_lwe_result_summary.csv:** Provides the processed statistical summary (mean values) for key generation, encryption, and decryption latencies, along with final ciphertext sizes across the tested message range.
 
 **Execution Environments**
 
-**EC-LWE Implementation (EC_LWE_test.ipynb):** Executed on a local machine [Intel i5, 11th gen , 16 GB RAM] to evaluate raw performance, entropy, and local hardware behavior.
+**EC-LWE Implementation and Testing (EC-LWE-Implementation&Testing.ipynb):** Executed on a local machine [Intel i5, 11th Gen, 16 GB RAM] to evaluate:
 
-**Standardized Benchmarking (Test_on_ECC&PQC.ipynb):** Executed via Google Colab (Standard Runtime). This environment was used to provide a globally reproducible baseline for comparing EC-LWE against NIST PQC standards (Kyber and FrodoKEM) under identical virtualized conditions.
+End-to-end performance
 
+Ciphertext entropy and uniqueness
+
+Integrity and tamper-detection behavior
+
+Practical scaling characteristics under a consistent classical threat model
+
+All reported results in the accompanying CSV files were generated using this environment.
 
 **Usage**
 
-**Local Test:** Run EC_LWE_test.ipynb to generate the performance metrics and entropy scores for the EC-LWE scheme.
+**Local Execution:** Run EC-LWE-Implementation&Testing.ipynb to:
 
-**Cloud Benchmarking:** Open Test_on_ECC&PQC.ipynb in Google Colab, upload the required libraries, and run all cells to reproduce the NIST PQC comparison results.
+Execute the full EC-LWE encryption and decryption workflow
+
+Perform ciphertext diversity and entropy tests
+
+Verify malleability resistance via tampering detection
+
+Generate performance results automatically saved to
+
+ec_lwe_result.csv
+
+ec_lwe_result_summary.csv
+
+No additional notebooks are required to reproduce the reported results.
+
+**Note:** This implementation is evaluated under classical security assumptions. Post-quantum key establishment is not addressed in the current version.
